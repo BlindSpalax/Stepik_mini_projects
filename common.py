@@ -1,6 +1,11 @@
-def is_valid_right_side(upper_limit: int) -> int:
-    while upper_limit < 1:
-        upper_limit = int(input('Правая граница должна быть больше 1!\n'))
+def is_valid_upper_limit(upper_limit: str) -> int:
+    try:
+        if (upper_limit := int(upper_limit)) > 1:
+            return upper_limit
+    except ValueError:
+        while (not upper_limit.isdigit()) or int(upper_limit) <= 1:
+            upper_limit = input('Правая граница должна быть числом больше 1!\n')
+        upper_limit = int(upper_limit)
 
     return upper_limit
 

@@ -1,7 +1,7 @@
 import random
 
 
-def chars_allowed(chars):
+def chars_allowed(chars: str) -> str:
     digits = '0123456789'
     lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
     uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -34,7 +34,7 @@ def chars_allowed(chars):
     return chars
 
 
-def generate_password(length, chars):
+def generate_password(length: int, chars: str) -> str:
     return ''.join(random.sample(chars, length))
 
 

@@ -1,11 +1,11 @@
 import random
 
-from common import get_wrong_guess_message, is_valid, is_valid_right_side, one_more
+from common import get_wrong_guess_message, is_valid, is_valid_upper_limit, one_more
 
 
 def game() -> None:
-    upper_limit = int(input('От 1 до какого числа ты хочешь сыграть в числовую угадайку?\n'))
-    upper_limit = is_valid_right_side(upper_limit)
+    upper_limit = input('От 1 до какого числа ты хочешь сыграть в числовую угадайку?\n')
+    upper_limit = is_valid_upper_limit(upper_limit)
 
     secret = random.randint(1, upper_limit)
     guess = input(f'Попробуй угадать загаданное целое число от 1 до {upper_limit}!\n')
