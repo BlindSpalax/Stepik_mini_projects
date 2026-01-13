@@ -1,6 +1,31 @@
 import random
 
-from common import get_wrong_guess_message, is_valid, is_valid_upper_limit, one_more
+from common import one_more
+
+
+def get_wrong_guess_message(guessed: int, secret: int) -> str:
+    adv = 'меньше' if guessed < secret else 'больше'
+
+    return f'Ваше число {adv} загаданного, попробуйте ещё разок\n'
+
+
+def is_valid_guess(num: str, right_side: int) -> bool:
+    if not num.isdigit():
+        return False
+
+    return 1 <= int(num) <= right_side
+
+
+def is_valid_upper_limit(upper_limit: str) -> int:
+    try:
+        if (upper_limit := int(upper_limit)) > 1:
+            return upper_limit
+    except ValueError:
+        while (not upper_limit.isdigit()) or int(upper_limit) <= 1:
+            upper_limit = input('Правая граница должна быть числом больше 1!\n')
+        upper_limit = int(upper_limit)
+
+    return upper_limit
 
 
 def game() -> None:
@@ -11,7 +36,7 @@ def game() -> None:
     guess = input(f'Попробуй угадать загаданное целое число от 1 до {upper_limit}!\n')
     guess_cnt = 1
     while True:
-        if not is_valid(guess, upper_limit):
+        if not is_valid_guess(guess, upper_limit):
             guess = input(f'Может всё-таки введём целое число от 1 до {upper_limit}? :D\n')
             guess_cnt += 1
             continue
