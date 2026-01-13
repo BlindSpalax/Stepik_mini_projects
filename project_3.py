@@ -1,15 +1,13 @@
 import random
 
-digits = '0123456789'
-lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
-uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-punctuation = '!#$%&*+-=?@^_'
-restrict = 'il1Lo0O'
-
-chars = ''
-
 
 def chars_allowed(chars):
+    digits = '0123456789'
+    lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+    uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    punctuation = '!#$%&*+-=?@^_'
+    restrict = 'il1Lo0O'
+
     include_digits = input('Хотите ли Вы, чтобы в пароле были цифры (от 0 до 9)? Ответьте "Да" или "Нет".\n').lower()
     include_uppercase = input(
         'Хотите ли Вы, чтобы в пароле были прописные буквы (ABC...)? Ответьте "Да" или "Нет".\n').lower()
@@ -40,14 +38,21 @@ def generate_password(length, chars):
     return ''.join(random.sample(chars, length))
 
 
-how_many_passwords = int(input('Сколько паролей необходимо сгенерировать? Введите целое число.\n'))
-length_of_password = int(input('Какая длина паролей требуется? (Все пароли будут одной длины).\n'))
+def main():
+    how_many_passwords = int(input('Сколько паролей необходимо сгенерировать? Введите целое число.\n'))
+    chars = ''
+    length_of_password = 1
 
-chars = chars_allowed(chars)
+    while len(chars) < length_of_password:
+        length_of_password = int(input('Какая длина паролей требуется? (Все пароли будут одной длины).\n'))
+        chars = chars_allowed(chars)
+        if len(chars) < length_of_password:
+            print('Приносим извинения, однако Вы выбрали слишком мало уникальных символов для такой длины пароля :(')
+            print('Попробуйте выбрать больше символов или укоротить Ваш пароль.')
 
-for _ in range(how_many_passwords):
-    if len(chars) < length_of_password:
-        print('Приносим извинения, однако Вы выбрали слишком мало уникальных символов для такой длины пароля :(')
-        print('Попробуйте выбрать больше символов или укоротить Ваш пароль.')
-        break
-    print(generate_password(length_of_password, chars))
+    for _ in range(how_many_passwords):
+        print(generate_password(length_of_password, chars))
+
+
+if __name__ == '__main__':
+    main()
