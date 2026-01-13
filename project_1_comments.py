@@ -29,7 +29,7 @@ def is_valid_upper_limit(upper_limit: str) -> int:
 
 
 def game() -> None:
-    upper_limit = input('От 1 до какого числа ты хочешь сыграть в числовую угадайку?\n')
+    upper_limit = input('От одного до какого числа ты хочешь сыграть в числовую угадайку?\n')
     upper_limit = is_valid_upper_limit(upper_limit)
 
     secret = random.randint(1, upper_limit)
