@@ -1,7 +1,7 @@
 import random
 
 from common import one_more
-
+# more comments
 
 def magic_ball(name: str) -> None:
     answers = ["Бесспорно", "Мне кажется - да", "Пока неясно, попробуй снова", "Даже не думай",

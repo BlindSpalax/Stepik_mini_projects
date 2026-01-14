@@ -1,6 +1,6 @@
 import random
 
-
+# MORE COMMENTS
 def chars_allowed(chars: str) -> str:
     digits = '0123456789'
     lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
