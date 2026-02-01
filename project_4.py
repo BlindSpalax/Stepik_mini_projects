@@ -5,7 +5,7 @@ def is_valid_direction() -> str:
 
     return direction
 
-
+# MOOOOREE COOMMMMEEENNNTSS
 def is_valid_step() -> int:
     step = input('Какой шаг в шифре Цезаря Вы хотите реализовать? Напишите любое целое положительное число.\n'
                  '(Нецелое будет округлено в сторону нуля)\n')
